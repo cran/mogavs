@@ -1,5 +1,15 @@
 createAdditionalPlots <-
 function(mogavs, epsilonBand=0, kBest=1, method=c("MSE","kBest")){
+  if(is.character(epsilonBand)){
+    stop("Supplied epsilonBand looks like a character string, should be a number")
+  }
+  if(is.character(kBest)){
+    stop("Supplied kBest looks like a character string, should be a number")
+  }
+  if(length(method)>1){
+    warning("No method supplied, defaulting to MSE")
+    method <- method[1]
+  }
   method<-tolower(method)
   archiveSet<-mogavs$archiveSet
   obj1ArchiveSet<-mogavs$obj1ArchiveSet
@@ -11,7 +21,7 @@ function(mogavs, epsilonBand=0, kBest=1, method=c("MSE","kBest")){
     epsilonBand<-0
   }
   if(method=="kbest" && missing(kBest)){
-    warning("Arg kBest not supplied, defaulting to one")
+    warning("Arg kBest not supplied, defaulting to one",call.=FALSE)
     kBest<-1
   }
   sizeArchive<-nrow(archiveSet)

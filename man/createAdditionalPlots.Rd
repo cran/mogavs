@@ -28,7 +28,7 @@ The number of models that will be highlighted for each number of variables.
 }
   \item{method}{
 %%     ~~Describe \code{method} here~~
-Either \code{MSE} or \code{kBest} (case-insesitive). \code{MSE} plots the set of all tried models, with models inside the \code{epsilonBand} highlighted. \code{method="kBest"} plots the set of all tried models, with the \code{kBest} best models for each number of variables highlighted.
+Either \code{MSE} or \code{kBest} (case-insensitive). \code{MSE} plots the set of all tried models, with models inside the \code{epsilonBand} highlighted. \code{method="kBest"} plots the set of all tried models, with the \code{kBest} best models for each number of variables highlighted.
 }
 }
 \author{
@@ -42,7 +42,7 @@ Tommi Pajala <tommi.pajala@aalto.fi>
 data(sampleData)
 mod<-mogavs(y~.,data=sampleData,maxGenerations=20)
 createAdditionalPlots(mod,epsilonBand=0,kBest=15,"kbest")
-createAdditionalPlots(mod,epsilonBand=0.001,"mse")
+createAdditionalPlots(mod,epsilonBand=0.001,method="mse")
 
 }
 % Add one or more standard keywords, see file 'KEYWORDS' in the
